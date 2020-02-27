@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Analytics Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/Analytics" class="dashAnchor"></a>
+    <a title="Analytics Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Track Docs</a> (93% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Track Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Analytics Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Analytics.html">Analytics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Analytics/Event.html">– Event</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Analytics/MultiTrackerError.html">– MultiTrackerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Analytics/MultiTracker.html">– MultiTracker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Analytics/AnyAnalyticsTracker.html">– AnyAnalyticsTracker</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:5Track21AnalyticsParameterKeyP">AnalyticsParameterKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AnalyticsTracker.html">AnalyticsTracker</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Analytics</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Analytics</span></code></pre>
+
+                </div>
+              </div>
+            <p>A type representing the Analytics namespace (case-less enum).</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Track9AnalyticsO10Parametersa"></a>
+                    <a name="//apple_ref/swift/Alias/Parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Track9AnalyticsO10Parametersa">Parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A typealias representing a dictionary of analytics parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Parameters</span><span class="o">&lt;</span><span class="kt">Key</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Key</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="k">where</span> <span class="kt">Key</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:5Track21AnalyticsParameterKeyP">AnalyticsParameterKey</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Track9AnalyticsO5EventO"></a>
+                    <a name="//apple_ref/swift/Enum/Event" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Track9AnalyticsO5EventO">Event</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An analytics event representing either a state update or a user action, with an associated value and parameters.</p>
+
+<p>The goal is to allow using a type safe representation of all possible analytics event types, e.g. using
+<code>enum</code>&lsquo;s for <code>State</code> and <code>Action</code> types.</p>
+
+<p>Examples of <em>state</em> events:</p>
+
+<ul>
+<li>screen display</li>
+<li>user login/logout</li>
+<li>any global state</li>
+</ul>
+
+<p>Examples of <em>action</em> events:</p>
+
+<ul>
+<li>button tap</li>
+<li>scroll event</li>
+<li>any user input (e.g. search term)</li>
+</ul>
+
+                        <a href="../Enums/Analytics/Event.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Event</span><span class="o">&lt;</span><span class="kt">State</span><span class="p">,</span> <span class="kt">Action</span><span class="p">,</span> <span class="kt">Key</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Key</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:5Track21AnalyticsParameterKeyP">AnalyticsParameterKey</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Track9AnalyticsO17MultiTrackerErrorO"></a>
+                    <a name="//apple_ref/swift/Enum/MultiTrackerError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Track9AnalyticsO17MultiTrackerErrorO">MultiTrackerError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An error produced by <code><a href="../Enums/Analytics/MultiTracker.html">MultiTracker</a></code> instances.</p>
+
+                        <a href="../Enums/Analytics/MultiTrackerError.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">MultiTrackerError</span> <span class="p">:</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Error</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Track9AnalyticsO12MultiTrackerC"></a>
+                    <a name="//apple_ref/swift/Class/MultiTracker" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Track9AnalyticsO12MultiTrackerC">MultiTracker</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An analytics tracker that forwards analytics events to multiple trackers, while not doing any tracking on its
+own.</p>
+
+                        <a href="../Enums/Analytics/MultiTracker.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">MultiTracker</span><span class="o">&lt;</span><span class="kt">State</span><span class="p">,</span> <span class="kt">Action</span><span class="p">,</span> <span class="kt">ParameterKey</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/AnalyticsTracker.html">AnalyticsTracker</a></span> <span class="k">where</span> <span class="kt">ParameterKey</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:5Track21AnalyticsParameterKeyP">AnalyticsParameterKey</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Track9AnalyticsO03AnyB7TrackerC"></a>
+                    <a name="//apple_ref/swift/Class/AnyAnalyticsTracker" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Track9AnalyticsO03AnyB7TrackerC">AnyAnalyticsTracker</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type-erased analytics tracker.</p>
+
+                        <a href="../Enums/Analytics/AnyAnalyticsTracker.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">AnyAnalyticsTracker</span><span class="o">&lt;</span><span class="kt">State</span><span class="p">,</span> <span class="kt">Action</span><span class="p">,</span> <span class="kt">ParameterKey</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/AnalyticsTracker.html">AnalyticsTracker</a></span> <span class="k">where</span> <span class="kt">ParameterKey</span> <span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:5Track21AnalyticsParameterKeyP">AnalyticsParameterKey</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

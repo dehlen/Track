@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Track  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Track  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Track Docs</a> (93% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Track Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Track  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/Analytics.html">Analytics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Analytics/Event.html">– Event</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Analytics/MultiTrackerError.html">– MultiTrackerError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Analytics/MultiTracker.html">– MultiTracker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Analytics/AnyAnalyticsTracker.html">– AnyAnalyticsTracker</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:5Track21AnalyticsParameterKeyP">AnalyticsParameterKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/AnalyticsTracker.html">AnalyticsTracker</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='track' class='heading'>Track</h1>
+
+<p><img src="https://img.shields.io/badge/supports-Swift%20Package%20Manager-green.svg">
+<img src="./docs/badge.svg"></p>
+
+<p>This packages implements abstraction to track user behaviour in your application. The concrete tracking implementation is provided by you or the provider you are using. You can track with multiple providers in parallel. </p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>Currently only Swift Package Manager is supported. 
+Swift Package Manager is a dependency manager built into Xcode.</p>
+
+<p>If you are using Xcode 11 or higher, go to File / Swift Packages / Add Package Dependency&hellip; and enter package repository URL <a href="https://github.com/dehlen/Track.git">https://github.com/dehlen/Track.git</a>, then follow the instructions.</p>
+
+<p>To remove the dependency, select the project and open Swift Packages (which is next to Build Settings). You can add and remove packages from this tab.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='model' class='heading'>Model</h3>
+
+<p>First you need to create your models. Track coforms to generic types to allow you to track certain state, action or additional context:</p>
+<pre class="highlight swift"><code>    <span class="kd">enum</span> <span class="kt">AppState</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="nf">screen</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+      <span class="k">case</span> <span class="nf">userLoggedIn</span><span class="p">(</span><span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+      <span class="k">case</span> <span class="n">userLoggedOut</span>
+    <span class="p">}</span>
+
+    <span class="kd">enum</span> <span class="kt">AppAction</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">logoutButtonPressed</span>
+      <span class="k">case</span> <span class="nf">search</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">enum</span> <span class="kt">AppParameterKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">AnalyticsParameterKey</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="n">language</span>
+      <span class="k">case</span> <span class="n">date</span>
+    <span class="p">}</span>
+</code></pre>
+<h3 id='tracker' class='heading'>Tracker</h3>
+
+<p>With the models in place you can create a tracker to track your incoming events:</p>
+<pre class="highlight swift"><code>    <span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppAnalyticsTracker</span><span class="o">&lt;</span><span class="kt">S</span><span class="p">,</span> <span class="kt">A</span><span class="p">,</span> <span class="kt">PK</span><span class="p">:</span> <span class="kt">AnalyticsParameterKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">AnalyticsTracker</span>  <span class="p">{</span>
+
+    <span class="kd">typealias</span> <span class="kt">State</span> <span class="o">=</span> <span class="kt">S</span>
+    <span class="kd">typealias</span> <span class="kt">Action</span> <span class="o">=</span> <span class="kt">A</span>
+    <span class="kd">typealias</span> <span class="kt">ParameterKey</span> <span class="o">=</span> <span class="kt">PK</span>
+
+    <span class="c1">// MARK: - Lifecycle</span>
+
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">ID</span> <span class="o">=</span> <span class="s">"AppAnalyticsTracker"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">track</span><span class="p">(</span><span class="n">_</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">Event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do what ever you want here</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p>By conforming to <code><a href="Protocols/AnalyticsTracker.html">AnalyticsTracker</a></code> you can handle the concrete implementation of a event.</p>
+<h3 id='real-world-scenario' class='heading'>Real World Scenario</h3>
+
+<p>Of course in the real world you often have to deal with multiple tracking solutions you need to implement in your app. To cover you in this case Track implements a <code>MultiTracker</code>. Several <code><a href="Protocols/AnalyticsTracker.html">AnalyticsTracker</a></code> can be registered with this approach and all events will be passed to the concrete tracker implementations:</p>
+<pre class="highlight swift"><code>     <span class="k">let</span> <span class="nv">subTracker1</span> <span class="o">=</span> <span class="kt">AppAnalyticsTracker</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"1"</span><span class="p">)</span>
+   <span class="k">let</span> <span class="nv">subTracker2</span> <span class="o">=</span> <span class="kt">AppAnalyticsTracker</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"2"</span><span class="p">)</span>
+   <span class="k">let</span> <span class="nv">tracker</span> <span class="o">=</span> <span class="kt">Analytics</span><span class="o">.</span><span class="kt">MultiTracker</span><span class="o">&lt;</span><span class="kt">AppState</span><span class="p">,</span> <span class="kt">AppAction</span><span class="p">,</span> <span class="kt">AppParameterKey</span><span class="o">&gt;</span>
+
+   <span class="c1">// register</span>
+   <span class="n">tracker</span><span class="o">.</span><span class="nf">register</span><span class="p">(</span><span class="n">subTracker1</span><span class="p">)</span>
+   <span class="n">tracker</span><span class="o">.</span><span class="nf">register</span><span class="p">(</span><span class="n">subTracker2</span><span class="p">)</span>
+
+   <span class="c1">// unregister</span>
+   <span class="n">tracker</span><span class="o">.</span><span class="nf">unregister</span><span class="p">(</span><span class="n">subTracker1</span><span class="p">)</span>
+   <span class="n">tracker</span><span class="o">.</span><span class="nf">unregister</span><span class="p">(</span><span class="n">subTracker2</span><span class="p">)</span>
+</code></pre>
+
+<p>Now you are able to track arbitrary state/actions and to send these events to all your implemented Analytics platforms:</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">stateEvent</span> <span class="o">=</span> <span class="kt">MultiTracker</span><span class="o">.</span><span class="kt">Event</span><span class="o">.</span><span class="nf">state</span><span class="p">(</span><span class="o">.</span><span class="nf">screen</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Login"</span><span class="p">),</span> <span class="p">[</span><span class="o">.</span><span class="nv">language</span> <span class="p">:</span> <span class="s">"DE"</span><span class="p">,</span> <span class="o">.</span><span class="nv">date</span> <span class="p">:</span> <span class="kt">Date</span><span class="p">()])</span>
+    <span class="k">let</span> <span class="nv">actionEvent</span> <span class="o">=</span> <span class="kt">MultiTracker</span><span class="o">.</span><span class="kt">Event</span><span class="o">.</span><span class="nf">action</span><span class="p">(</span><span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">searchTerm</span><span class="p">:</span> <span class="s">"Track"</span><span class="p">),</span> <span class="p">[</span><span class="o">.</span><span class="nv">language</span> <span class="p">:</span> <span class="s">"DE"</span><span class="p">,</span> <span class="o">.</span><span class="nv">date</span> <span class="p">:</span> <span class="kt">Date</span><span class="p">()])</span>
+
+  <span class="n">tracker</span><span class="o">.</span><span class="nf">track</span><span class="p">(</span><span class="n">stateEvent</span><span class="p">)</span>
+  <span class="n">tracker</span><span class="o">.</span><span class="nf">track</span><span class="p">(</span><span class="n">actionEvent</span><span class="p">)</span>
+</code></pre>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p>The documentation is generated thanks to <a href="https://github.com/realm/jazzy">jazzy</a>.</p>
+
+<p>You can find the latest version here: <a href="./docs">Documentation</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright &copy; 2020 David Ehlen</p>
+
+<p>See LICENSE file</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
