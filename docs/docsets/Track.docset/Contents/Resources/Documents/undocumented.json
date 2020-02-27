@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/Track/Sources/Track/Analytics.swift",
+      "line": 24,
+      "symbol": "Analytics.Event.state(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/Track/Sources/Track/Analytics.swift",
+      "line": 25,
+      "symbol": "Analytics.Event.action(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/d0283356/Downloads/Libraries/Track"
+}
