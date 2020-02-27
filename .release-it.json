@@ -3,7 +3,7 @@
   	"before:init": "jazzy --module Track --swift-build-tool spm --build-tool-arguments -Xswiftc,-swift-version,-Xswiftc,5"
   },
   "git": {
-    "requireCleanWorkingDir": true,
+    "requireCleanWorkingDir": false,
     "requireBranch": "master",
     "requireUpstream": true,
     "requireCommits": false,
